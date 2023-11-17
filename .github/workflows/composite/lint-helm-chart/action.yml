@@ -1,8 +1,8 @@
 name: 'Lint Helm Chart'
 description: 'Lints the helm charts'
 inputs:
-  CHART_DIR:
-    description: 'The filename of the helm chart to be linted'
+  CHARTS:
+    description: 'The filename(s) of the helm chart to be linted'
     type: string
     required: true
   CHECK_VERSION_INCREMENT:
@@ -19,5 +19,6 @@ runs:
   - name: Run chart-testing (lint)
     shell: bash
     run: ct lint \
-          --charts ${{ inputs.CHART_DIR }} \
+          --charts ${{ inputs.CHARTS }} \
           --check-version-increment=${{ CHECK_VERSION_INCREMENT}}
+          --validate-maintainers=${{ VALIDATE_MAINTAINERS }}
