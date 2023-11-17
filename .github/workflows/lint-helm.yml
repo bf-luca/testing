@@ -20,5 +20,9 @@ jobs:
           check-latest: true
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.0
-
-          
+      - name: Lint helm chart
+        uses: ./.github/composite/lint-helm-chart/action.yml
+        with:
+          CHARTS_DIR: "./mychart/"
+          CHECK_VERSION_INCREMENT: false
+          VALIDATE_MAINTAINERS: false
