@@ -3,11 +3,11 @@ kind: ManagedCertificate
 metadata:
   name: subdomain-cert-{{ .Values.env.prefix}}
 spec:
-  domains:
-{{- range $subdomain := .Values.subdomains }}
-  {{ if eq $.Values.env.stage "prod" }}
-    - {{ $subdomain }}.bergfreunde.de
-  {{ else }}
-    - {{ $subdomain }}.{{ $.Values.env.prefix }}.bergfreunde.de
-  {{ end }}
-{{- end }}
+  domains: |
+    {{- range $subdomain := .Values.subdomains }}
+      {{ if eq $.Values.env.stage "prod" }}
+        - {{ $subdomain }}.bergfreunde.de
+      {{ else }}
+        - {{ $subdomain }}.{{ $.Values.env.prefix }}.bergfreunde.de
+      {{ end }}
+    {{- end }}
