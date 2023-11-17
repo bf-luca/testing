@@ -23,6 +23,7 @@ jobs:
       - name: Lint helm chart
         uses: ./.github/workflows/composite/lint-helm-chart
         with:
+          TARGET_BRANCH: "main"
           CHARTS: "./mychart/"
           CHECK_VERSION_INCREMENT: false
           VALIDATE_MAINTAINERS: false

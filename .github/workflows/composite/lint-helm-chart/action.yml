@@ -1,6 +1,11 @@
 name: 'Lint Helm Chart'
 description: 'Lints the helm charts'
 inputs:
+  TARGET_BRANCH:
+    description: "The branch name to be linted (required to overrride the default 'master')"
+    type: string
+    required: false
+    default: main
   CHARTS:
     description: 'The filename(s) of the helm chart to be linted'
     type: string
@@ -19,6 +24,7 @@ runs:
   - name: Run chart-testing (lint)
     shell: bash
     run: ct lint \
+          --target-branch ${{ TARGET_BRANCH }}
           --charts ${{ inputs.CHARTS }} \
-          --check-version-increment=${{ inputs.CHECK_VERSION_INCREMENT}} \
-          --validate-maintainers=${{ inputs.VALIDATE_MAINTAINERS }}
+          --check-version-increment ${{ inputs.CHECK_VERSION_INCREMENT}} \
+          --validate-maintainers ${{ inputs.VALIDATE_MAINTAINERS }}
