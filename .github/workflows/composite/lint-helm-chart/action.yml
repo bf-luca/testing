@@ -10,7 +10,7 @@ inputs:
     type: bool
     required: true
   VALIDATE_MAINTAINERS:
-    description: 'The filename of the helm chart to be linted'
+    description: 'If the existence and validity of maintainers should be checked'
     type: bool
     required: true
 runs:
@@ -20,5 +20,5 @@ runs:
     shell: bash
     run: ct lint \
           --charts ${{ inputs.CHARTS }} \
-          --check-version-increment=${{ CHECK_VERSION_INCREMENT}}
+          --check-version-increment=${{ CHECK_VERSION_INCREMENT}} \
           --validate-maintainers=${{ VALIDATE_MAINTAINERS }}
