@@ -21,7 +21,7 @@ jobs:
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.0
       - name: Lint helm chart
-        uses: ./.github/workflows/composite/lint-helm-chart/action.yml
+        uses: ./.github/workflows/composite/lint-helm-chart
         with:
           CHARTS: "./mychart/"
           CHECK_VERSION_INCREMENT: false
