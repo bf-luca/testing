@@ -20,5 +20,5 @@ runs:
     shell: bash
     run: ct lint \
           --charts ${{ inputs.CHARTS }} \
-          --check-version-increment=${{ CHECK_VERSION_INCREMENT}} \
-          --validate-maintainers=${{ VALIDATE_MAINTAINERS }}
+          --check-version-increment=${{ inputs.CHECK_VERSION_INCREMENT}} \
+          --validate-maintainers=${{ inputs.VALIDATE_MAINTAINERS }}
