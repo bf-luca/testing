@@ -25,5 +25,5 @@ jobs:
         with:
           CHARTS_DIR: "./mychart/"
           CHECK_VERSION_INCREMENT: false
-          CHECK_MAINTAINERS: false
+          VALIDATE_MAINTAINERS: false
           

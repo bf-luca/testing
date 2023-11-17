@@ -1,10 +1,8 @@
-apiVersion: v1
-kind: ConfigMap
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
 metadata:
-  name: "{{ .Release.Name }}-configmap"
-data:
-  myvalue: "Hello World"
-  myval2: "as"
+  name: subdomain-cert-{{ .Values.env.prefix}}
+spec:
   domains:
 {{- range $subdomain := .Values.subdomains }}
   {{ if eq $.Values.env.stage "prod" }}
