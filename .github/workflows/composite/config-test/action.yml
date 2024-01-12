@@ -1,0 +1,16 @@
+name: 'Config Test'
+description: Tests stuff
+inputs:
+  ATOMIC:
+    description: "Use --atomic flag. If set, the upgrade process rolls back changes made in case of failed upgrades."
+    required: false
+    type: boolean
+    default: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Debug ATOMIC value
+    run: echo ATOMIC: ${{ inputs.ATOMIC }}
+  - name: Debug ATOMIC value
+    run: echo ATOMIC-Flag: ${{ inputs.ATOMIC && '--atomic' || '' }}
