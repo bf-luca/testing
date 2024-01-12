@@ -11,6 +11,6 @@ runs:
   using: "composite"
   steps:
   - name: Debug ATOMIC value
-    run: echo ATOMIC: ${{ inputs.ATOMIC }}
+    run: "echo ATOMIC: ${{ inputs.ATOMIC }}"
   - name: Debug ATOMIC value
-    run: echo ATOMIC-Flag: ${{ inputs.ATOMIC && '--atomic' || '' }}
+    run: "echo ATOMIC-Flag: ${{ inputs.ATOMIC && '--atomic' || '' }}"
