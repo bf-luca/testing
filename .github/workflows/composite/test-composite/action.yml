@@ -21,4 +21,4 @@ runs:
     run: |-
       ls \
         -l \
-        ${{ inputs.ATOMIC && '-a' || '' }}
+        ${{ inputs.ATOMIC == 'true' && '-a' || '' }}
