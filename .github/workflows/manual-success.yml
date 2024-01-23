@@ -1,7 +1,12 @@
 
 name: Testing
 
-on: [ workflow_dispatch ]
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        required: true
 
 jobs:
   example:
