@@ -7,7 +7,7 @@ on:
       environment:
         type: environment
         required: true
-        default: dev-
+        default: dev-0*
 
 jobs:
   example:
