@@ -4,24 +4,32 @@ name: Testing
 on:
   workflow_dispatch:
     inputs:
-      environment:
+      myEnv:
         type: environment
         required: true
         default: dev-
 
 jobs:
-  example:
+  #example:
+  #  runs-on: ubuntu-latest
+  #  strategy:
+  #    matrix:
+  #      environment: ['dev-01', 'dev-02', 'dev-03']
+  #    fail-fast: true
+  #  steps:
+  #  - run: echo "Test on ${{ matrix.environment }}"
+  #  - run: sleep 100
+  #    timeout-minutes: 1
+  #    id: bad
+  #    continue-on-error: true
+  #  - run: echo "OK"
+  #    if: job.steps.bad.status == failure()
+  example-two:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        environment: ['dev-01', 'dev-02']
+        environment: ['dev-01', 'dev-02', 'dev-03']
       fail-fast: true
-      max-parallel: 1
     steps:
-    - run: echo "Test on ${{ matrix.environment }}"
-    - run: sleep 100
-      timeout-minutes: 1
-      id: bad
-      continue-on-error: true
-    - run: echo "OK"
-      if: job.steps.bad.status == failure()
+    - run: echo "Hi from ${{ matrix.environment }}"
+      if: ${{ matrix.environment == inputs.myEnv}}
