@@ -19,7 +19,8 @@ jobs:
       max-parallel: 1
     steps:
     - run: echo "Test on ${{ matrix.environment }}"
-    - run: exit 1
+    - run: sleep 100
+      timeout-minutes: 1
       id: bad
       continue-on-error: true
     - run: echo "OK"
