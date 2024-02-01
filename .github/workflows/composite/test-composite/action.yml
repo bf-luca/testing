@@ -1,5 +1,8 @@
 name: 'Config Test'
 description: Tests stuff
+branding:
+  icon: aperture
+  color: pink
 inputs:
   ATOMIC:
     description: "Use --atomic flag. If set, the upgrade process rolls back changes made in case of failed upgrades."
