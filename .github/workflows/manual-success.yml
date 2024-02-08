@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        environment: ${{ vars.DEV_SYSTEMS }}
+        e: ${{ fromJSON(vars.DEV_SYSTEMS) }}
       fail-fast: true
     steps:
-    - run: echo "Test on ${{ matrix.environment }}"
+    - run: echo "Test on ${{ matrix.e }}"
     - run: sleep 10
       timeout-minutes: 1
       id: bad
