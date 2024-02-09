@@ -29,6 +29,8 @@ jobs:
   wf-select:
     runs-on: ubuntu-latest
     environment: ${{ inputs.env }}
+    steps:
+      - run: "Test on ${{ inputs.env }}"
   
   build-push-deploy:
     runs-on: ubuntu-latest
