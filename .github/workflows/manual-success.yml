@@ -3,34 +3,36 @@ name: Testing
 
 on:
   workflow_dispatch:
-  #  inputs:
-  #    myEnv:
-  #      type: environment
-  #      required: true
-  #      default: dev-
+    inputs:
+      #env:
+      #  type: environment
+      #  required: true
+      #  default: dev-
+      env:
+        type: choice
+        required: true
+        options:
+          - dev-01
+          - dev-02
+          - dev-03
 
 jobs:
-  example:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        environment: ${{ fromJSON(vars.DEV_SYSTEMS) }}
-      fail-fast: true
-    environment: ${{ matrix.environment }}
-    steps:
-    - run: echo "Test on ${{ matrix.environment }}"
-    - run: sleep 10
-      timeout-minutes: 1
-      id: bad
-      continue-on-error: true
-    - run: echo "Ok"
-      if: job.steps.bad.status == failure()
-  #example-two:
+  #env-select:
   #  runs-on: ubuntu-latest
   #  strategy:
   #    matrix:
-  #      environment: ['dev-01', 'dev-02', 'dev-03']
+  #      environment: ${{ fromJSON(vars.DEV_SYSTEMS) }}
   #    fail-fast: true
+  #  environment: ${{ matrix.environment }}
   #  steps:
-  #  - run: echo "Hi from ${{ matrix.environment }}"
-  #    if: ${{ matrix.environment == inputs.myEnv}}
+  #  - run: echo "Test on ${{ matrix.environment }}"
+  wf-select:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
+  
+  build-push-deploy:
+    runs-on: ubuntu-latest
+    needs: wf-select
+    environment: ${{ inputs.env }}
+    steps:
+      - run: echo "Build Push Deploy on ${{ inputs.env }}"
