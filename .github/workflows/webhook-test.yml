@@ -1,0 +1,13 @@
+name: Webhook Test
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - webhook
+
+jobs:
+  hello-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello Webhook"
